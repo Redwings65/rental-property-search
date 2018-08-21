@@ -1,7 +1,9 @@
 package com.example.RentalPropertySearch.Rental.Property.Search.apis;
 
+import com.example.RentalPropertySearch.Rental.Property.Search.model.User;
 import com.example.RentalPropertySearch.Rental.Property.Search.services.RentalService;
 import com.example.RentalPropertySearch.Rental.Property.Search.model.RentalProperty;
+import com.example.RentalPropertySearch.Rental.Property.Search.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,9 @@ public class MainApiController {
 
     @Autowired
     public RentalService rentalService;
+
+    @Autowired
+    public UserService userService;
 
     //hit login controller first to carry a small session
 
@@ -41,11 +46,15 @@ public class MainApiController {
         return rentalService.savePropertyAsFavorite(id);
     }
 
-    @GetMapping(path="/save")
+    @PostMapping(path="/saveproperty")
     public @ResponseBody
     String saveNewProperty(@RequestBody RentalProperty property) {
         return rentalService.saveNewProperty(property);
     }
+
+    @PostMapping(path="/saveuser")
+    public @ResponseBody
+    String saveNewuser(@RequestBody User user) { return userService.saveUser(user); }
 
     @GetMapping(path="/viewsaved")
     public @ResponseBody
