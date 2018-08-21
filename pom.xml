@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>Rental Property Search</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Rental Property Search API</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

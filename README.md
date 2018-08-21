@@ -29,7 +29,7 @@ grant all on rental_property_app.* to 'springuser'@'localhost';
 - After that you should be all set as long as you have the application in a IDE, just run the spring boot app using the class rentalpropertysearchapplication.java and Flyways will take care of building out the db structure when the application builds and flyways will also add a few items for you as "test data" :)
 
 
-# running the Application
+# Running the Application
 - Below is what you will use to run the application, please do that in the same directory as the POM.xml, if it successfully starts you will see
 main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context
 
@@ -56,9 +56,11 @@ curl -X GET -H "content-type: application/json" -H "accept: application/json" ht
 //this will find the currently authenticated user and find their saved properties :)
 curl -X GET -H "content-type: application/json" -H "accept: application/json" http://localhost:8080/api/viewsaved
 
-curl -X POST -d '{"deliveryAddress":{"street":"main"},"paymentMethod":{"method":"visa"},"shoppingCart":{"item":"coffee"}}' -H "content-type: application/json" -H "accept: application/json" http://localhost:8080/api/save
+curl -X POST -d '{"RentalProperty":{"propertyName":"main street harbor shack", "address":"8th main street", "city":"SouthVille", "price":"500938", "leaseTerm":"1"}}' -H "content-type: application/json" -H "accept: application/json" http://localhost:8080/api/saveproperty
 
-# ending notes and implementation of code
+curl -X POST -d '{"User":{"emailAddress":"henry@gmail.com"}}' -H "content-type: application/json" -H "accept: application/json" http://localhost:8080/api/saveuser
+
+# Ending Notes and Implementation
 
 - Below is the script that flyway creates when your application first builds
 
